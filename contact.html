@@ -1,0 +1,532 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Contact Andrew Gay P. Fernandez.">
+    <title>Contact | Andrew Gay P. Fernandez</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f7f7f7;
+            color: #171717;
+            line-height: 1.7;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        button,
+        input,
+        textarea {
+            font: inherit;
+        }
+
+        header {
+            background: #111;
+            color: white;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            width: 84%;
+            max-width: 1150px;
+            min-height: 75px;
+            margin: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 21px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            color: #999;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 26px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #ddd;
+            font-size: 14px;
+        }
+
+        .nav-links a:hover {
+            color: white;
+            text-decoration: underline;
+            text-underline-offset: 7px;
+        }
+
+        .menu-toggle {
+            display: none;
+            color: white;
+            background: transparent;
+            border: 1px solid #555;
+            padding: 4px 11px;
+            font-size: 23px;
+            cursor: pointer;
+        }
+
+        .page-heading {
+            background: #111;
+            color: white;
+            text-align: center;
+            padding: 75px 20px;
+        }
+
+        .page-heading .eyebrow {
+            color: #aaa;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            font-size: 12px;
+            margin-bottom: 12px;
+        }
+
+        .page-heading h1 {
+            font-size: clamp(36px, 5vw, 52px);
+            margin-bottom: 12px;
+        }
+
+        .page-heading p {
+            max-width: 600px;
+            margin: auto;
+            color: #ccc;
+        }
+
+        .container {
+            width: 84%;
+            max-width: 1050px;
+            margin: 65px auto;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 0.85fr 1.15fr;
+            gap: 28px;
+            align-items: start;
+        }
+
+        .contact-info,
+        .contact-form {
+            background: white;
+            border: 1px solid #ddd;
+            padding: 30px;
+        }
+
+        h2 {
+            font-size: 23px;
+            margin-bottom: 18px;
+        }
+
+        .intro {
+            color: #666;
+            margin-bottom: 25px;
+            font-size: 14px;
+        }
+
+        .info-item {
+            padding: 17px 0;
+            border-bottom: 1px solid #e5e5e5;
+        }
+
+        .info-item:last-child {
+            border-bottom: none;
+        }
+
+        .info-item strong {
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .info-item p,
+        .info-item a {
+            color: #666;
+            font-size: 14px;
+            overflow-wrap: anywhere;
+        }
+
+        .info-item a:hover {
+            color: #111;
+            text-decoration: underline;
+        }
+
+        label {
+            display: block;
+            font-size: 14px;
+            font-weight: bold;
+            margin: 15px 0 6px;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 12px 13px;
+            border: 1px solid #ccc;
+            border-radius: 0;
+            background: white;
+            color: #171717;
+            outline: none;
+        }
+
+        input:focus,
+        textarea:focus {
+            border-color: #111;
+            box-shadow: 0 0 0 1px #111;
+        }
+
+        textarea {
+            min-height: 145px;
+            resize: vertical;
+        }
+
+        .send-btn {
+            width: 100%;
+            margin-top: 20px;
+            padding: 13px;
+            border: 1px solid #111;
+            background: #111;
+            color: white;
+            cursor: pointer;
+            transition: 0.25s;
+        }
+
+        .send-btn:hover {
+            background: #333;
+        }
+
+        .form-note {
+            margin-top: 12px;
+            color: #777;
+            font-size: 12px;
+        }
+
+        .back-home {
+            text-align: center;
+            margin-top: 35px;
+        }
+
+        .back-home a {
+            display: inline-block;
+            padding: 11px 20px;
+            border: 1px solid #111;
+            transition: 0.25s;
+        }
+
+        .back-home a:hover {
+            background: #111;
+            color: white;
+        }
+
+        footer {
+            background: #080808;
+            color: #aaa;
+            text-align: center;
+            padding: 23px 8%;
+            font-size: 13px;
+        }
+
+        footer a {
+            color: white;
+        }
+
+        @media (max-width: 700px) {
+            nav {
+                width: 90%;
+                min-height: 68px;
+            }
+
+            .logo {
+                font-size: 17px;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 68px;
+                left: 0;
+                width: 100%;
+                padding: 20px 5%;
+                background: #111;
+                border-top: 1px solid #333;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 18px;
+            }
+
+            .nav-links.show {
+                display: flex;
+            }
+
+            .container {
+                width: 90%;
+                margin: 40px auto;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-info,
+            .contact-form {
+                padding: 23px;
+            }
+
+            .page-heading {
+                padding: 55px 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVIGATION -->
+    <header>
+        <nav>
+            <a href="index.html" class="logo">ANDREW<span>.DEV</span></a>
+
+            <button
+                class="menu-toggle"
+                id="menuToggle"
+                aria-label="Toggle navigation"
+                aria-expanded="false">
+                ☰
+            </button>
+
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html#home">Home</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#skills">Skills</a></li>
+                <li><a href="index.html#projects">Projects</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- PAGE HEADING -->
+    <section class="page-heading">
+        <p class="eyebrow">Get in touch</p>
+        <h1>Contact Me</h1>
+        <p>
+            Have a question or want to connect? Feel free to send me
+            a message using the form or reach me through my links.
+        </p>
+    </section>
+
+    <!-- CONTACT CONTENT -->
+    <main class="container">
+        <div class="contact-grid">
+
+            <!-- CONTACT INFORMATION -->
+            <section class="contact-info">
+                <h2>Contact Information</h2>
+
+                <p class="intro">
+                    You can contact me through the details below.
+                </p>
+
+                <div class="info-item">
+                    <strong>Name</strong>
+                    <p>Andrew Gay P. Fernandez</p>
+                </div>
+
+                <div class="info-item">
+                    <strong>Email</strong>
+                    <p>
+                        <a href="mailto:dreee2006@gmnail.com">
+                            dreee2006@gmnail.com
+                        </a>
+                    </p>
+                </div>
+
+                <div class="info-item">
+                    <strong>School</strong>
+                    <p>Divine Word College of Calapan</p>
+                </div>
+
+                <div class="info-item">
+                    <strong>Course</strong>
+                    <p>
+                        Bachelor of Science in Information and Technology
+                    </p>
+                </div>
+
+                <div class="info-item">
+                    <strong>Facebook</strong>
+                    <p>
+                        <a
+                            href="https://www.facebook.com/dre.2high/"
+                            target="_blank"
+                            rel="noopener noreferrer">
+                            Visit My Facebook Profile
+                        </a>
+                    </p>
+                </div>
+            </section>
+
+            <!-- CONTACT FORM -->
+            <section class="contact-form">
+                <h2>Send a Message</h2>
+
+                <p class="intro">
+                    Complete the form below. Your default email app will
+                    open with your message prepared for sending.
+                </p>
+
+                <form id="contactForm">
+                    <label for="name">Your Name</label>
+                    <input
+                        type="text"
+                        id="name"
+                        name="name"
+                        placeholder="Enter your name"
+                        autocomplete="name"
+                        required>
+
+                    <label for="email">Your Email</label>
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        placeholder="Enter your email address"
+                        autocomplete="email"
+                        required>
+
+                    <label for="subject">Subject</label>
+                    <input
+                        type="text"
+                        id="subject"
+                        name="subject"
+                        placeholder="Enter the subject"
+                        required>
+
+                    <label for="message">Your Message</label>
+                    <textarea
+                        id="message"
+                        name="message"
+                        placeholder="Write your message here..."
+                        required></textarea>
+
+                    <button type="submit" class="send-btn">
+                        Prepare Email
+                    </button>
+
+                    <p class="form-note">
+                        This form opens your email application; it does
+                        not send or store messages on this website.
+                    </p>
+                </form>
+            </section>
+
+        </div>
+
+        <div class="back-home">
+            <a href="index.html">← Back to Home</a>
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>
+            &copy; <span id="year"></span>
+            Andrew Gay P. Fernandez. All rights reserved.
+        </p>
+    </footer>
+
+    <script>
+        // Automatic copyright year
+        document.getElementById("year").textContent =
+            new Date().getFullYear();
+
+        // Mobile navigation menu
+        const menuToggle = document.getElementById("menuToggle");
+        const navLinks = document.getElementById("navLinks");
+
+        menuToggle.addEventListener("click", function () {
+            navLinks.classList.toggle("show");
+
+            const isExpanded = navLinks.classList.contains("show");
+
+            menuToggle.setAttribute("aria-expanded", isExpanded);
+            menuToggle.textContent = isExpanded ? "✕" : "☰";
+        });
+
+        // Close menu after navigation
+        document.querySelectorAll(".nav-links a").forEach(function (link) {
+            link.addEventListener("click", function () {
+                navLinks.classList.remove("show");
+                menuToggle.setAttribute("aria-expanded", "false");
+                menuToggle.textContent = "☰";
+            });
+        });
+
+        // Prepare an email using the visitor's default email application
+        document.getElementById("contactForm").addEventListener(
+            "submit",
+            function (event) {
+                event.preventDefault();
+
+                const name =
+                    document.getElementById("name").value.trim();
+
+                const email =
+                    document.getElementById("email").value.trim();
+
+                const subject =
+                    document.getElementById("subject").value.trim();
+
+                const message =
+                    document.getElementById("message").value.trim();
+
+                if (!name || !email || !subject || !message) {
+                    alert("Please complete all fields.");
+                    return;
+                }
+
+                const recipient = "dreee2006@gmnail.com";
+
+                const emailSubject = encodeURIComponent(subject);
+
+                const emailBody = encodeURIComponent(
+                    "Name: " + name +
+                    "\nEmail: " + email +
+                    "\n\nMessage:\n" + message
+                );
+
+                const mailtoLink =
+                    "mailto:" + recipient +
+                    "?subject=" + emailSubject +
+                    "&body=" + emailBody;
+
+                window.location.href = mailtoLink;
+            }
+        );
+    </script>
+
+</body>
+</html>

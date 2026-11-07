@@ -1,0 +1,897 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portfolio of Andrew Gay P. Fernandez, BSIT student and aspiring full-stack developer.">
+    <title>Andrew Gay P. Fernandez | Portfolio</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f7f7f7;
+            color: #171717;
+            line-height: 1.7;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        button {
+            font: inherit;
+        }
+
+        .container {
+            width: 84%;
+            max-width: 1150px;
+            margin: auto;
+        }
+
+        section {
+            padding: 85px 0;
+            scroll-margin-top: 80px;
+        }
+
+        .section-title {
+            font-size: 34px;
+            text-align: center;
+            margin-bottom: 12px;
+        }
+
+        .section-description {
+            max-width: 650px;
+            margin: 0 auto 40px;
+            color: #666;
+            text-align: center;
+        }
+
+        /* NAVIGATION */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: #111;
+            color: white;
+        }
+
+        nav {
+            width: 84%;
+            max-width: 1150px;
+            min-height: 75px;
+            margin: auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-size: 21px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            color: #999;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 26px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #ddd;
+            font-size: 14px;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: white;
+            text-decoration: underline;
+            text-underline-offset: 7px;
+        }
+
+        .menu-toggle {
+            display: none;
+            color: white;
+            background: transparent;
+            border: 1px solid #555;
+            padding: 4px 11px;
+            font-size: 23px;
+            cursor: pointer;
+        }
+
+        /* HERO */
+        .hero {
+            background: #111;
+            color: white;
+            min-height: 590px;
+            display: flex;
+            align-items: center;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1.3fr 0.7fr;
+            align-items: center;
+            gap: 65px;
+        }
+
+        .hero-label {
+            color: #aaa;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            font-size: 12px;
+            margin-bottom: 18px;
+        }
+
+        .hero h1 {
+            font-size: clamp(38px, 5vw, 62px);
+            line-height: 1.15;
+            margin-bottom: 22px;
+        }
+
+        .hero h1 span {
+            color: #aaa;
+        }
+
+        .hero-text {
+            color: #ccc;
+            max-width: 600px;
+            margin-bottom: 30px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 13px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 22px;
+            border: 1px solid white;
+            font-size: 14px;
+            font-weight: bold;
+            text-align: center;
+            transition: 0.25s;
+            cursor: pointer;
+        }
+
+        .btn-light {
+            background: white;
+            color: #111;
+        }
+
+        .btn-light:hover {
+            background: #ddd;
+        }
+
+        .btn-outline {
+            color: white;
+            background: transparent;
+        }
+
+        .btn-outline:hover {
+            background: white;
+            color: #111;
+        }
+
+        .profile-area {
+            text-align: center;
+        }
+
+        .profile-photo {
+            width: 260px;
+            height: 300px;
+            max-width: 100%;
+            object-fit: cover;
+            object-position: center;
+            border: 1px solid #555;
+            background: #222;
+            display: block;
+            margin: 0 auto 18px;
+        }
+
+        .profile-caption {
+            color: #aaa;
+            font-size: 14px;
+        }
+
+        /* ABOUT */
+        .about {
+            background: white;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 0.8fr 1.2fr;
+            gap: 45px;
+            align-items: start;
+        }
+
+        .about-card {
+            padding: 30px;
+            background: #f2f2f2;
+            border-left: 4px solid #111;
+        }
+
+        .about-card h3,
+        .about-text h3 {
+            margin-bottom: 15px;
+            font-size: 22px;
+        }
+
+        .about-card p,
+        .about-text p {
+            color: #555;
+            margin-bottom: 15px;
+        }
+
+        .education {
+            margin-top: 22px;
+            padding-top: 17px;
+            border-top: 1px solid #ddd;
+        }
+
+        .education strong {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .education span {
+            color: #555;
+            font-size: 14px;
+        }
+
+        /* SKILLS */
+        .skills {
+            background: #f7f7f7;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .skill-card {
+            background: white;
+            border: 1px solid #ddd;
+            padding: 27px;
+            transition: 0.25s;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 25px #0000000c;
+        }
+
+        .skill-number {
+            color: #888;
+            font-size: 12px;
+            margin-bottom: 10px;
+        }
+
+        .skill-card h3 {
+            font-size: 19px;
+            margin-bottom: 9px;
+        }
+
+        .skill-card p {
+            font-size: 14px;
+            color: #666;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 28px;
+        }
+
+        .tag {
+            background: white;
+            border: 1px solid #ccc;
+            padding: 7px 13px;
+            font-size: 13px;
+        }
+
+        /* PROJECTS */
+        .projects {
+            background: white;
+        }
+
+        .project-filters {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 35px;
+        }
+
+        .filter-btn {
+            padding: 9px 17px;
+            border: 1px solid #ccc;
+            background: white;
+            color: #222;
+            cursor: pointer;
+            transition: 0.25s;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            color: white;
+            background: #111;
+            border-color: #111;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 24px;
+        }
+
+        .project-card {
+            border: 1px solid #ddd;
+            background: white;
+            transition: transform 0.25s, box-shadow 0.25s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 25px #0000000d;
+        }
+
+        .project-card.hidden {
+            display: none;
+        }
+
+        .project-preview {
+            min-height: 165px;
+            padding: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            background: #171717;
+        }
+
+        .project-preview span {
+            font-size: 18px;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+
+        .project-info {
+            padding: 25px;
+        }
+
+        .project-category {
+            color: #777;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .project-info h3 {
+            margin: 7px 0 10px;
+            font-size: 21px;
+        }
+
+        .project-info p {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 18px;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 7px;
+        }
+
+        .project-tech span {
+            padding: 4px 9px;
+            background: #eee;
+            font-size: 11px;
+        }
+
+        /* CONTACT CTA */
+        .contact {
+            text-align: center;
+            background: #111;
+            color: white;
+        }
+
+        .contact .section-description {
+            color: #bbb;
+        }
+
+        footer {
+            background: #080808;
+            color: #aaa;
+            text-align: center;
+            padding: 23px 8%;
+            font-size: 13px;
+        }
+
+        footer a {
+            color: white;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 900px) {
+            .hero-content {
+                gap: 30px;
+            }
+
+            .profile-photo {
+                height: 260px;
+            }
+
+            .skills-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 650px) {
+            .container,
+            nav {
+                width: 90%;
+            }
+
+            nav {
+                min-height: 68px;
+            }
+
+            .logo {
+                font-size: 17px;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 68px;
+                left: 0;
+                width: 100%;
+                padding: 20px 5%;
+                background: #111;
+                border-top: 1px solid #333;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 18px;
+            }
+
+            .nav-links.show {
+                display: flex;
+            }
+
+            section {
+                padding: 65px 0;
+            }
+
+            .hero {
+                padding: 65px 0;
+            }
+
+            .hero-content,
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .hero h1 {
+                font-size: 42px;
+            }
+
+            .profile-area {
+                margin-top: 15px;
+            }
+
+            .profile-photo {
+                width: 230px;
+                height: 260px;
+            }
+
+            .section-title {
+                font-size: 29px;
+            }
+
+            .skills-grid,
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVIGATION -->
+    <header>
+        <nav>
+            <a href="#home" class="logo">ANDREW<span>.DEV</span></a>
+
+            <button
+                class="menu-toggle"
+                id="menuToggle"
+                aria-label="Toggle navigation"
+                aria-expanded="false">
+                ☰
+            </button>
+
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home" class="active">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero" id="home">
+        <div class="container hero-content">
+            <div>
+                <p class="hero-label">Welcome to my portfolio</p>
+
+                <h1>
+                    Hello, I'm<br>
+                    <span>Andrew Fernandez.</span>
+                </h1>
+
+                <p class="hero-text">
+                    A BSIT student passionate about technology, programming,
+                    and software development. I am continuously improving
+                    my coding skills and working toward becoming a full-stack
+                    developer.
+                </p>
+
+                <div class="hero-buttons">
+                    <a href="#projects" class="btn btn-light">
+                        Explore My Projects
+                    </a>
+
+                    <a href="contact.html" class="btn btn-outline">
+                        Contact Me
+                    </a>
+                </div>
+            </div>
+
+            <div class="profile-area">
+                <img
+                    class="profile-photo"
+                    src="profile.jpg"
+                    alt="Profile photo of Andrew Gay P. Fernandez">
+
+                <p class="profile-caption">
+                    BSIT Student &amp; Aspiring Developer
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="about" id="about">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+
+            <p class="section-description">
+                A little about my background, interests, and future goals.
+            </p>
+
+            <div class="about-content">
+                <div class="about-card">
+                    <h3>My Career Goal</h3>
+
+                    <p>
+                        My goal is to become a full-stack developer and use
+                        my knowledge to create useful and innovative
+                        applications.
+                    </p>
+
+                    <div class="education">
+                        <strong>Education</strong>
+                        <span>
+                            Bachelor of Science in Information and Technology
+                        </span>
+                        <br>
+                        <span>Divine Word College of Calapan</span>
+                    </div>
+                </div>
+
+                <div class="about-text">
+                    <h3>Who I Am</h3>
+
+                    <p>
+                        I am a BSIT student who is passionate about learning
+                        technology, programming, and software development.
+                        I enjoy improving my skills in coding and
+                        understanding how computer systems work.
+                    </p>
+
+                    <p>
+                        My goal is to become a skilled IT professional and
+                        use my knowledge to create useful and innovative
+                        applications.
+                    </p>
+
+                    <p>
+                        My interests include web development, UI design,
+                        and database management.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section class="skills" id="skills">
+        <div class="container">
+            <h2 class="section-title">My Skills</h2>
+
+            <p class="section-description">
+                Programming and web technologies I work with and continue
+                to develop.
+            </p>
+
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <p class="skill-number">01 / WEB</p>
+                    <h3>HTML &amp; CSS</h3>
+                    <p>
+                        Building and styling website structures with
+                        clean layouts and responsive design.
+                    </p>
+                </div>
+
+                <div class="skill-card">
+                    <p class="skill-number">02 / PROGRAMMING</p>
+                    <h3>C#</h3>
+                    <p>
+                        Developing application logic and practicing
+                        software development fundamentals.
+                    </p>
+                </div>
+
+                <div class="skill-card">
+                    <p class="skill-number">03 / DATABASE</p>
+                    <h3>SQL</h3>
+                    <p>
+                        Learning to store, retrieve, update, and manage
+                        data in database systems.
+                    </p>
+                </div>
+            </div>
+
+            <div class="skill-tags">
+                <span class="tag">HTML</span>
+                <span class="tag">CSS</span>
+                <span class="tag">C#</span>
+                <span class="tag">SQL</span>
+                <span class="tag">Web Development</span>
+                <span class="tag">UI Design</span>
+                <span class="tag">Database Management</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section class="projects" id="projects">
+        <div class="container">
+            <h2 class="section-title">My Projects</h2>
+
+            <p class="section-description">
+                Applications that demonstrate my learning and
+                understanding of software and database development.
+            </p>
+
+            <div class="project-filters">
+                <button class="filter-btn active" data-filter="all">
+                    All Projects
+                </button>
+
+                <button class="filter-btn" data-filter="web">
+                    Applications
+                </button>
+
+                <button class="filter-btn" data-filter="database">
+                    Database
+                </button>
+            </div>
+
+            <div class="projects-grid">
+
+                <!-- STUDENT INFORMATION SYSTEM -->
+                <article class="project-card" data-category="database">
+                    <div class="project-preview">
+                        <span>01 / STUDENT RECORDS</span>
+                    </div>
+
+                    <div class="project-info">
+                        <p class="project-category">
+                            Student Management Application
+                        </p>
+
+                        <h3>Student Information System</h3>
+
+                        <p>
+                            A simple application that stores and manages
+                            student information, including names, student
+                            IDs, courses, and year levels. Users can add,
+                            view, edit, and delete student records.
+                        </p>
+
+                        <div class="project-tech">
+                            <span>Student Records</span>
+                            <span>CRUD</span>
+                            <span>Database</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- LIBRARY MANAGEMENT SYSTEM -->
+                <article class="project-card" data-category="web">
+                    <div class="project-preview">
+                        <span>02 / LIBRARY RECORDS</span>
+                    </div>
+
+                    <div class="project-info">
+                        <p class="project-category">
+                            Library Management Application
+                        </p>
+
+                        <h3>Library Management System</h3>
+
+                        <p>
+                            A simple application for managing library
+                            books. Users can add books, view available
+                            books, and manage book borrowing and returns.
+                        </p>
+
+                        <div class="project-tech">
+                            <span>Book Records</span>
+                            <span>Borrowing</span>
+                            <span>Returns</span>
+                        </div>
+                    </div>
+                </article>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT CALL TO ACTION -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2 class="section-title">Let's Connect</h2>
+
+            <p class="section-description">
+                Have a question or want to get in touch? Visit my contact
+                page to find my contact information and send me a message.
+            </p>
+
+            <a href="contact.html" class="btn btn-light">
+                Visit Contact Page
+            </a>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>
+            &copy; <span id="year"></span>
+            Andrew Gay P. Fernandez. All rights reserved.
+        </p>
+        <p>
+            <a href="contact.html">Contact Me</a>
+        </p>
+    </footer>
+
+    <script>
+        // Automatic copyright year
+        document.getElementById("year").textContent =
+            new Date().getFullYear();
+
+        // Mobile navigation menu
+        const menuToggle = document.getElementById("menuToggle");
+        const navLinks = document.getElementById("navLinks");
+
+        menuToggle.addEventListener("click", function () {
+            navLinks.classList.toggle("show");
+
+            const isExpanded = navLinks.classList.contains("show");
+
+            menuToggle.setAttribute("aria-expanded", isExpanded);
+            menuToggle.textContent = isExpanded ? "✕" : "☰";
+        });
+
+        // Close the mobile menu when a link is selected
+        document.querySelectorAll(".nav-links a").forEach(function (link) {
+            link.addEventListener("click", function () {
+                navLinks.classList.remove("show");
+                menuToggle.setAttribute("aria-expanded", "false");
+                menuToggle.textContent = "☰";
+            });
+        });
+
+        // Project category filters
+        const filterButtons = document.querySelectorAll(".filter-btn");
+        const projectCards = document.querySelectorAll(".project-card");
+
+        filterButtons.forEach(function (button) {
+            button.addEventListener("click", function () {
+                const selectedCategory = button.dataset.filter;
+
+                filterButtons.forEach(function (item) {
+                    item.classList.remove("active");
+                });
+
+                button.classList.add("active");
+
+                projectCards.forEach(function (card) {
+                    const category = card.dataset.category;
+
+                    if (
+                        selectedCategory === "all" ||
+                        category === selectedCategory
+                    ) {
+                        card.classList.remove("hidden");
+                    } else {
+                        card.classList.add("hidden");
+                    }
+                });
+            });
+        });
+
+        // Highlight the current homepage section
+        const pageSections = document.querySelectorAll(
+            "section[id]"
+        );
+
+        const homeLinks = document.querySelectorAll(
+            '.nav-links a[href^="#"]'
+        );
+
+        window.addEventListener("scroll", function () {
+            let currentSection = "home";
+
+            pageSections.forEach(function (section) {
+                if (window.scrollY >= section.offsetTop - 130) {
+                    currentSection = section.id;
+                }
+            });
+
+            homeLinks.forEach(function (link) {
+                link.classList.remove("active");
+
+                if (
+                    link.getAttribute("href") === "#" + currentSection
+                ) {
+                    link.classList.add("active");
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
