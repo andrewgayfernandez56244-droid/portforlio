@@ -7,6 +7,10 @@
     <meta name="description" content="Portfolio of Andrew Gay P. Fernandez, BSIT student and aspiring full-stack developer.">
     <title>Andrew Gay P. Fernandez | Portfolio</title>
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+
     <style>
         * {
             margin: 0;
@@ -191,6 +195,104 @@
 
         .profile-area {
             text-align: center;
+            position: relative;
+            display: inline-block;
+        }
+
+        #lace {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 260px;
+            height: 300px;
+            pointer-events: auto;
+            z-index: 5;
+            image-rendering: pixelated;
+            opacity: 0.7;
+            mix-blend-mode: screen;
+        }
+
+        #badge-rig {
+            display: inline-block;
+            justify-self: center;
+            align-self: center;
+            transform-origin: top center;
+            will-change: transform;
+        }
+
+        #case {
+            border: 4px solid #1a1a1a;
+            box-shadow: 6px 6px 0 #000, 10px 10px 0 rgba(0, 0, 0, 0.2);
+            background: #3a3a3a;
+            padding: 6px;
+            image-rendering: pixelated;
+            perspective: 1000px;
+            cursor: pointer;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 0.8s;
+        }
+
+        #case.flipped {
+            transform: rotateY(180deg);
+        }
+
+        .case-back {
+            position: absolute;
+            inset: 6px;
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+            transform: rotateY(180deg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #3a3a3a;
+            color: #f5f5f5;
+            font-family: "Press Start 2P", monospace;
+            font-size: 10px;
+            text-align: center;
+            padding: 16px;
+            border: 4px solid #1a1a1a;
+            box-shadow: 6px 6px 0 #000, 10px 10px 0 rgba(0, 0, 0, 0.2);
+        }
+
+        #lace-clip {
+            width: 40px;
+            height: 20px;
+            margin: 0 auto -4px;
+            background: #7a7a7a;
+            border: 4px solid #1a1a1a;
+            box-shadow: 4px 4px 0 #000;
+            image-rendering: pixelated;
+            position: relative;
+            z-index: 2;
+        }
+
+        #lace-clip::after {
+            content: "";
+            position: absolute;
+            left: 50%;
+            top: 4px;
+            transform: translateX(-50%);
+            width: 8px;
+            height: 8px;
+            background: #1a1a1a;
+            border: 2px solid #555;
+        }
+
+        #id-lace {
+            width: 28px;
+            height: 180px;
+            margin: 0 auto 0;
+            background:
+                repeating-linear-gradient(
+                    to bottom,
+                    #b0b0b0 0px, #b0b0b0 6px,
+                    #707070 6px, #707070 12px
+                );
+            border: 4px solid #1a1a1a;
+            box-shadow: 4px 4px 0 #000;
+            image-rendering: pixelated;
         }
 
         .profile-photo {
@@ -434,6 +536,588 @@
             color: white;
         }
 
+        /* 3D ENHANCEMENTS */
+        html {
+            perspective: 1400px;
+        }
+
+        body {
+            transform-style: preserve-3d;
+        }
+
+        .btn, .skill-card, .project-card, .tag, .filter-btn,
+        .about-card, .profile-photo, .nav-links a, .section-title {
+            transform-style: preserve-3d;
+            transition: transform 0.35s ease, box-shadow 0.35s ease;
+        }
+
+        .btn:hover {
+            transform: translateZ(24px) translateY(-2px) scale(1.03);
+            box-shadow: 0 18px 40px rgba(0, 0, 0, 0.25);
+        }
+
+        .skill-card:hover {
+            transform: translateZ(30px) translateY(-8px) rotateX(2deg);
+            box-shadow: 0 24px 50px rgba(0, 0, 0, 0.18);
+        }
+
+        .project-card:hover {
+            transform: translateZ(30px) translateY(-8px) rotateX(2deg);
+            box-shadow: 0 24px 50px rgba(0, 0, 0, 0.18);
+        }
+
+        .tag:hover {
+            transform: translateZ(18px) translateY(-3px) scale(1.08);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+        }
+
+        .filter-btn:hover {
+            transform: translateZ(16px) translateY(-2px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+        }
+
+        .about-card:hover {
+            transform: translateZ(20px) translateY(-4px);
+            box-shadow: 0 18px 40px rgba(0, 0, 0, 0.12);
+        }
+
+        .profile-photo:hover {
+            transform: translateZ(20px) rotateY(-4deg) scale(1.02);
+            box-shadow: 0 24px 50px rgba(0, 0, 0, 0.3);
+        }
+
+        .nav-links a {
+            display: inline-block;
+        }
+
+        .nav-links a:hover {
+            transform: translateZ(18px) translateY(-3px);
+            text-shadow: 0 6px 12px rgba(0, 0, 0, 0.35);
+        }
+
+        .section-title:hover {
+            transform: translateZ(12px);
+        }
+
+        header {
+            transform-style: preserve-3d;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        .skills-grid, .projects-grid, .about-content, .hero-content {
+            perspective: 1000px;
+        }
+
+        .nav-links.show {
+            animation: menuPop 0.25s ease-out;
+        }
+
+        @keyframes menuPop {
+            from {
+                opacity: 0;
+                transform: translateZ(-40px) translateY(-10px) scale(0.96);
+            }
+            to {
+                opacity: 1;
+                transform: translateZ(0) translateY(0) scale(1);
+            }
+        }
+
+        /* ANIMATIONS */
+        #mouse-glow {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 0;
+            background: radial-gradient(560px circle at var(--mx, 50vw) var(--my, 50vh), rgba(120, 140, 255, 0.16), transparent 45%);
+        }
+
+        body > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        header {
+            z-index: 1000;
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px) translateZ(0);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0) translateZ(0);
+        }
+
+        @keyframes floatY {
+            0%, 100% { transform: translateY(0) translateZ(0); }
+            50% { transform: translateY(-12px) translateZ(20px); }
+        }
+
+        /* profile float animation removed */
+
+        /* MINECRAFT THEME */
+        body {
+            font-family: "Courier New", "Lucida Console", monospace;
+            background-color: #7ec0ee;
+            background-image:
+                linear-gradient(rgba(0, 0, 0, 0.08) 2px, transparent 2px),
+                linear-gradient(90deg, rgba(0, 0, 0, 0.08) 2px, transparent 2px);
+            background-size: 16px 16px;
+            image-rendering: pixelated;
+        }
+
+        h1, h2, h3, .logo, .section-title, .btn, .filter-btn,
+        .send-btn, .menu-toggle, .hero-label, .project-category,
+        .skill-number, .profile-caption {
+            font-family: "Press Start 2P", monospace;
+            letter-spacing: 0;
+        }
+
+        .section-title {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        .hero h1 {
+            font-size: clamp(16px, 2.4vw, 26px);
+            line-height: 1.6;
+        }
+
+        .skill-card h3,
+        .project-info h3 {
+            font-size: 12px;
+            line-height: 1.6;
+        }
+
+        img {
+            image-rendering: pixelated;
+        }
+
+        .profile-photo {
+            image-rendering: pixelated;
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+            box-shadow:
+                4px 4px 0 #1a1a1a,
+                8px 8px 0 rgba(0, 0, 0, 0.35),
+                12px 12px 0 rgba(0, 0, 0, 0.2),
+                16px 16px 0 rgba(0, 0, 0, 0.1);
+        }
+
+        .profile-photo:hover {
+            box-shadow:
+                6px 6px 0 #1a1a1a,
+                12px 12px 0 rgba(0, 0, 0, 0.35),
+                18px 18px 0 rgba(0, 0, 0, 0.2),
+                24px 24px 0 rgba(0, 0, 0, 0.1);
+        }
+
+        .hero {
+            background-color: #7ec0ee;
+            background-image:
+                linear-gradient(rgba(255, 255, 255, 0.15) 2px, transparent 2px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.15) 2px, transparent 2px);
+            background-size: 16px 16px;
+        }
+
+        .about {
+            background-color: #7a7a7a;
+            background-image:
+                linear-gradient(rgba(0, 0, 0, 0.12) 2px, transparent 2px),
+                linear-gradient(90deg, rgba(0, 0, 0, 0.12) 2px, transparent 2px);
+            background-size: 16px 16px;
+            color: #f5f5f5;
+        }
+
+        .about-card, .about-text p, .about-card p {
+            color: #f5f5f5;
+        }
+
+        .skills {
+            background-color: #8b5a2b;
+            background-image:
+                linear-gradient(rgba(0, 0, 0, 0.15) 2px, transparent 2px),
+                linear-gradient(90deg, rgba(0, 0, 0, 0.15) 2px, transparent 2px);
+            background-size: 16px 16px;
+            color: #f5f5f5;
+        }
+
+        .skills .section-description,
+        .skills .skill-card p,
+        .skills .skill-number {
+            color: #f5f5f5;
+        }
+
+        .projects {
+            background-color: #556b2f;
+            background-image:
+                linear-gradient(rgba(0, 0, 0, 0.15) 2px, transparent 2px),
+                linear-gradient(90deg, rgba(0, 0, 0, 0.15) 2px, transparent 2px);
+            background-size: 16px 16px;
+            color: #f5f5f5;
+        }
+
+        .projects .section-description,
+        .projects .project-info p,
+        .projects .project-category {
+            color: #f0f0f0;
+        }
+
+        .hero-label, .hero h1 span, .hero-text, .profile-caption {
+            color: #1a1a1a;
+            text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.35);
+        }
+
+        .project-tech span {
+            color: #1a1a1a;
+        }
+
+        .section-description {
+            color: #f0f0f0;
+            text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.35);
+        }
+
+        .contact {
+            background-color: #3a3a3a;
+            background-image:
+                linear-gradient(rgba(255, 255, 255, 0.06) 2px, transparent 2px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.06) 2px, transparent 2px);
+            background-size: 16px 16px;
+        }
+
+        .contact .section-description {
+            color: #ddd;
+        }
+
+        footer {
+            background-color: #1a1a1a;
+            background-image:
+                linear-gradient(rgba(255, 255, 255, 0.05) 2px, transparent 2px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.05) 2px, transparent 2px);
+            background-size: 16px 16px;
+            font-family: "Press Start 2P", monospace;
+            font-size: 9px;
+        }
+
+        /* Blocky cards */
+        .skill-card, .project-card, .about-card, .tag, .filter-btn,
+        .btn, .send-btn, .back-home a, input, textarea,
+        .contact-info, .contact-form, .project-preview, .info-item {
+            border: 4px solid #1a1a1a;
+            border-radius: 0 !important;
+            box-shadow: 4px 4px 0 #000;
+            image-rendering: pixelated;
+        }
+
+        .skill-card {
+            background: #9c7a5a;
+            color: #fff;
+        }
+
+        .project-card {
+            background: #6b8e23;
+            color: #fff;
+        }
+
+        .project-preview {
+            background: #3a3a3a;
+            border-bottom: 4px solid #1a1a1a;
+        }
+
+        .about-card {
+            background: #9c7a5a;
+        }
+
+        .tag {
+            background: #5a8f3a;
+            color: #fff;
+            font-family: "Press Start 2P", monospace;
+            font-size: 8px;
+            padding: 6px 8px;
+        }
+
+        /* Minecraft buttons */
+        .btn, .filter-btn, .send-btn {
+            background: #7a7a7a;
+            color: #fff;
+            text-shadow: 2px 2px 0 #000;
+            font-size: 9px;
+            padding: 10px 12px;
+            border-color: #1a1a1a;
+        }
+
+        .btn-light {
+            background: #5a8f3a;
+        }
+
+        .btn-outline {
+            background: #3a3a3a;
+        }
+
+        .filter-btn.active, .filter-btn:hover {
+            background: #5a8f3a;
+        }
+
+        .send-btn {
+            background: #5a8f3a;
+        }
+
+        .back-home a {
+            background: #7a7a7a;
+            color: #fff;
+            text-shadow: 2px 2px 0 #000;
+            font-family: "Press Start 2P", monospace;
+            font-size: 9px;
+        }
+
+        header {
+            background: #3a3a3a;
+            border-bottom: 4px solid #1a1a1a;
+        }
+
+        nav {
+            background: transparent;
+        }
+
+        .nav-links a {
+            font-family: "Press Start 2P", monospace;
+            font-size: 9px;
+            text-shadow: 2px 2px 0 #000;
+        }
+
+        .menu-toggle {
+            font-family: "Press Start 2P", monospace;
+            font-size: 14px;
+            background: #7a7a7a;
+            border: 4px solid #1a1a1a;
+        }
+
+        /* pixelated selection */
+        ::selection {
+            background: #5a8f3a;
+            color: #fff;
+        }
+
+        /* EXTRA FEATURES */
+        #scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 4px;
+            width: 0%;
+            background: #5a8f3a;
+            z-index: 2000;
+            box-shadow: 0 0 0 2px #1a1a1a;
+        }
+
+        #back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 44px;
+            height: 44px;
+            background: #7a7a7a;
+            color: #fff;
+            border: 4px solid #1a1a1a;
+            box-shadow: 4px 4px 0 #000;
+            font-family: "Press Start 2P", monospace;
+            font-size: 14px;
+            cursor: pointer;
+            z-index: 1500;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #back-to-top.show {
+            display: flex;
+        }
+
+        .toast {
+            position: fixed;
+            bottom: 80px;
+            left: 50%;
+            transform: translateX(-50%) translateY(20px);
+            background: #3a3a3a;
+            color: #fff;
+            border: 4px solid #1a1a1a;
+            box-shadow: 4px 4px 0 #000;
+            padding: 10px 16px;
+            font-family: "Press Start 2P", monospace;
+            font-size: 9px;
+            z-index: 2000;
+            opacity: 0;
+            transition: opacity 0.3s, transform 0.3s;
+            pointer-events: none;
+            max-width: 80%;
+            text-align: center;
+        }
+
+        .toast.show {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        #loader {
+            position: fixed;
+            inset: 0;
+            background: #7ec0ee;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            font-family: "Press Start 2P", monospace;
+            font-size: 12px;
+            color: #1a1a1a;
+            transition: opacity 0.6s;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        #loader.hide {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .loader-block {
+            width: 16px;
+            height: 16px;
+            background: #5a8f3a;
+            border: 2px solid #1a1a1a;
+            animation: loaderBounce 0.6s infinite alternate;
+        }
+
+        .loader-bar {
+            width: 200px;
+            height: 14px;
+            border: 4px solid #1a1a1a;
+            background: #7a7a7a;
+            box-shadow: 4px 4px 0 #000;
+            margin-top: 8px;
+        }
+
+        .loader-fill {
+            height: 100%;
+            width: 0%;
+            background: #5a8f3a;
+            transition: width 0.3s;
+        }
+
+        @keyframes loaderBounce {
+            from { transform: translateY(0); }
+            to { transform: translateY(-12px); }
+        }
+
+        body {
+            cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'><g transform='rotate(-45 12 12)'><rect x='10' y='0' width='4' height='14' fill='%2366ccff'/><rect x='9' y='2' width='1' height='3' fill='%2399ddff'/><rect x='14' y='2' width='1' height='3' fill='%2399ddff'/><rect x='8' y='14' width='8' height='4' fill='%238b5a2b'/><rect x='9' y='18' width='6' height='2' fill='%235a3a1a'/></g></svg>") 4 4, auto;
+        }
+
+        body.clicking,
+        body.clicking * {
+            cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'><g transform='rotate(-45 12 12)'><rect x='10' y='0' width='4' height='14' fill='%233a3a3a'/><rect x='9' y='2' width='1' height='3' fill='%235a5a5a'/><rect x='14' y='2' width='1' height='3' fill='%235a5a5a'/><rect x='8' y='14' width='8' height='4' fill='%231a1a1a'/><rect x='9' y='18' width='6' height='2' fill='%23000000'/></g></svg>") 4 4, auto !important;
+        }
+
+        .daynight-toggle {
+            background: #7a7a7a;
+            color: #fff;
+            border: 4px solid #1a1a1a;
+            box-shadow: 2px 2px 0 #000;
+            font-family: "Press Start 2P", monospace;
+            font-size: 8px;
+            padding: 6px 8px;
+            cursor: pointer;
+            margin-left: 12px;
+        }
+
+        body.night {
+            background-color: #0b1a2a !important;
+        }
+
+        body.night .hero {
+            background-color: #0b1a2a !important;
+        }
+
+        body.night .about {
+            background-color: #2a2a3a !important;
+        }
+
+        body.night .skills {
+            background-color: #3a2a1a !important;
+        }
+
+        body.night .projects {
+            background-color: #1a2a1a !important;
+        }
+
+        body.night .contact {
+            background-color: #1a1a1a !important;
+        }
+
+        /* Night-mode text contrast fixes */
+        body.night .hero-label,
+        body.night .hero h1 span,
+        body.night .hero-text,
+        body.night .profile-caption {
+            color: #e8e8e8;
+            text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.6);
+        }
+
+        body.night .section-description {
+            color: #d8d8d8;
+            text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.6);
+        }
+
+        body.night .project-tech span {
+            color: #1a1a1a;
+        }
+
+        body.night h1, body.night h2, body.night h3,
+        body.night .section-title, body.night .logo {
+            color: #f5f5f5;
+            text-shadow: 2px 2px 0 #000;
+        }
+
+        /* Day-mode: ensure hero text stays readable on sky background */
+        body:not(.night) .hero-label,
+        body:not(.night) .hero h1 span,
+        body:not(.night) .hero-text,
+        body:not(.night) .profile-caption {
+            color: #1a1a1a;
+        }
+
+        .particle {
+            position: fixed;
+            width: 6px;
+            height: 6px;
+            pointer-events: none;
+            z-index: 3000;
+            image-rendering: pixelated;
+        }
+
+        .mine-btn {
+            background: #5a8f3a;
+            color: #fff;
+            border: 4px solid #1a1a1a;
+            box-shadow: 4px 4px 0 #000;
+            font-family: "Press Start 2P", monospace;
+            font-size: 9px;
+            padding: 8px 12px;
+            cursor: pointer;
+            margin-top: 12px;
+        }
+
+        .mine-score {
+            font-family: "Press Start 2P", monospace;
+            font-size: 9px;
+            color: #f5f5f5;
+            margin-top: 8px;
+            text-shadow: 2px 2px 0 #000;
+        }
+
         /* RESPONSIVE */
         @media (max-width: 900px) {
             .hero-content {
@@ -525,10 +1209,27 @@
 
 <body>
 
+    <div id="loader">
+        <div class="loader-block"></div>
+        Loading world...
+        <div class="loader-bar">
+            <div class="loader-fill" id="loaderFill"></div>
+        </div>
+    </div>
+
+    <div id="scroll-progress"></div>
+
     <!-- NAVIGATION -->
     <header>
         <nav>
             <a href="#home" class="logo">ANDREW<span>.DEV</span></a>
+
+            <button
+                class="daynight-toggle"
+                id="dayNightBtn"
+                aria-label="Toggle day and night">
+                Day/Night
+            </button>
 
             <button
                 class="menu-toggle"
@@ -577,17 +1278,20 @@
                 </div>
             </div>
 
-            <div class="profile-area">
-                <img
-                    class="profile-photo"
-                    src="profile.jpg"
-                    alt="Profile photo of Andrew Gay P. Fernandez">
-
-                <p class="profile-caption">
-                    BSIT Student &amp; Aspiring Developer
-                </p>
+            <div id="badge-rig">
+                <div id="lace-clip" class="lace-clip"></div>
+                <div id="id-lace" class="id-lace"></div>
+                <div class="profile-area" id="case">
+                    <img
+                        class="profile-photo"
+                        src="profile.jpg"
+                        alt="Profile photo of Andrew Gay P. Fernandez">
+                    <div class="case-back">
+                        <p>BSIT Student &amp; Aspiring Developer</p>
+                    </div>
             </div>
         </div>
+    </div>
     </section>
 
     <!-- ABOUT -->
@@ -692,6 +1396,8 @@
                 <span class="tag">UI Design</span>
                 <span class="tag">Database Management</span>
             </div>
+
+
         </div>
     </section>
 
@@ -834,6 +1540,30 @@
             });
         });
 
+        // Pop the menu up on hover
+        const header = document.querySelector("header");
+        let menuHideTimer;
+        menuToggle.addEventListener("mouseenter", function () {
+            if (!navLinks.classList.contains("show")) {
+                navLinks.classList.add("show");
+                menuToggle.setAttribute("aria-expanded", "true");
+                menuToggle.textContent = "✕";
+            }
+            clearTimeout(menuHideTimer);
+        });
+
+        navLinks.addEventListener("mouseenter", function () {
+            clearTimeout(menuHideTimer);
+        });
+
+        header.addEventListener("mouseleave", function () {
+            menuHideTimer = setTimeout(function () {
+                navLinks.classList.remove("show");
+                menuToggle.setAttribute("aria-expanded", "false");
+                menuToggle.textContent = "☰";
+            }, 400);
+        });
+
         // Project category filters
         const filterButtons = document.querySelectorAll(".filter-btn");
         const projectCards = document.querySelectorAll(".project-card");
@@ -891,7 +1621,430 @@
                 }
             });
         });
+
+        // Mouse-following gradient glow
+        const mouseGlow = document.createElement("div");
+        mouseGlow.id = "mouse-glow";
+        document.body.prepend(mouseGlow);
+
+        window.addEventListener("mousemove", function (event) {
+            mouseGlow.style.setProperty("--mx", event.clientX + "px");
+            mouseGlow.style.setProperty("--my", event.clientY + "px");
+        });
+
+        // Scroll reveal animations
+        document.querySelectorAll(
+            "section, .skill-card, .project-card, .about-card, .tag"
+        ).forEach(function (element) {
+            element.classList.add("reveal");
+        });
+
+        const revealObserver = new IntersectionObserver(
+            function (entries) {
+                entries.forEach(function (entry) {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("visible");
+                    }
+                });
+            },
+            { threshold: 0.15 }
+        );
+
+        document.querySelectorAll(".reveal").forEach(function (element) {
+            revealObserver.observe(element);
+        });
+
+        // Gravity pendulum for the ID badge (lace + case)
+        (function () {
+            const rig = document.getElementById("badge-rig");
+            if (!rig) return;
+            let angle = 0.01;
+            let angularVelocity = 0;
+            const gravity = 0.0002;
+            const damping = 0.9996;
+            let dragging = false;
+            let time = 0;
+            const swayPhase = Math.random() * Math.PI * 2;
+            const swaySpeed = 0.0015 + Math.random() * 0.001;
+            const swayAmp = 0.000015 + Math.random() * 0.00001;
+
+            rig.style.transformOrigin = "50% 0%";
+
+            // interactive mouse control removed; badge sways on its own
+
+            function loop() {
+                if (!dragging) {
+                    time += swaySpeed;
+                    // gentle randomized sway + gravity
+                    angularVelocity += -gravity * Math.sin(angle) + swayAmp * Math.sin(time + swayPhase);
+                    angularVelocity *= damping;
+                    angle += angularVelocity;
+                }
+                rig.style.transform = "rotate(" + angle + "rad)";
+                requestAnimationFrame(loop);
+            }
+            loop();
+        })();
+
+        // Pixelated lace cloth simulation over the profile photo
+        (function () {
+            const canvas = document.getElementById("lace");
+            if (!canvas) return;
+            const ctx = canvas.getContext("2d");
+            const w = canvas.width;
+            const h = canvas.height;
+            const cols = 16;
+            const rows = 18;
+            const spacing = 14;
+            const gravity = 0.45;
+            const damping = 0.97;
+
+            const points = [];
+            for (let y = 0; y < rows; y++) {
+                for (let x = 0; x < cols; x++) {
+                    const px = 10 + x * spacing;
+                    const py = 6 + y * spacing;
+                    points.push({
+                        x: px,
+                        y: py,
+                        oldX: px,
+                        oldY: py,
+                        pinned: y === 0
+                    });
+                }
+            }
+
+            const idx = (x, y) => y * cols + x;
+            const constraints = [];
+            for (let y = 0; y < rows; y++) {
+                for (let x = 0; x < cols; x++) {
+                    if (x < cols - 1) constraints.push([idx(x, y), idx(x + 1, y)]);
+                    if (y < rows - 1) constraints.push([idx(x, y), idx(x, y + 1)]);
+                }
+            }
+
+            let dragged = null;
+            let mouseX = 0;
+            let mouseY = 0;
+
+            function getMousePos(event) {
+                const rect = canvas.getBoundingClientRect();
+                const scaleX = canvas.width / rect.width;
+                const scaleY = canvas.height / rect.height;
+                return {
+                    x: (event.clientX - rect.left) * scaleX,
+                    y: (event.clientY - rect.top) * scaleY
+                };
+            }
+
+            canvas.addEventListener("mousedown", function (event) {
+                const pos = getMousePos(event);
+                let best = null;
+                let bestDist = 14;
+                for (const p of points) {
+                    const d = Math.hypot(p.x - pos.x, p.y - pos.y);
+                    if (d < bestDist) {
+                        bestDist = d;
+                        best = p;
+                    }
+                }
+                if (best && !best.pinned) {
+                    dragged = best;
+                    mouseX = pos.x;
+                    mouseY = pos.y;
+                }
+            });
+
+            window.addEventListener("mousemove", function (event) {
+                if (!dragged) return;
+                const pos = getMousePos(event);
+                mouseX = pos.x;
+                mouseY = pos.y;
+            });
+
+            window.addEventListener("mouseup", function () {
+                dragged = null;
+            });
+
+            function update() {
+                for (const p of points) {
+                    if (p.pinned) continue;
+                    if (p === dragged) continue;
+                    const vx = (p.x - p.oldX) * damping;
+                    const vy = (p.y - p.oldY) * damping;
+                    p.oldX = p.x;
+                    p.oldY = p.y;
+                    p.x += vx;
+                    p.y += vy + gravity;
+                }
+
+                if (dragged) {
+                    dragged.x = mouseX;
+                    dragged.y = mouseY;
+                }
+
+                for (let iter = 0; iter < 6; iter++) {
+                    for (const [i, j] of constraints) {
+                        const a = points[i];
+                        const b = points[j];
+                        const dx = b.x - a.x;
+                        const dy = b.y - a.y;
+                        const dist = Math.hypot(dx, dy) || 0.0001;
+                        const diff = (dist - spacing) / dist;
+                        const moveX = dx * diff * 0.5;
+                        const moveY = dy * diff * 0.5;
+                        if (!a.pinned && a !== dragged) {
+                            a.x += moveX;
+                            a.y += moveY;
+                        }
+                        if (!b.pinned && b !== dragged) {
+                            b.x -= moveX;
+                            b.y -= moveY;
+                        }
+                    }
+                    // keep top row pinned in place
+                    for (const p of points) {
+                        if (p.pinned) {
+                            // reset to original top row positions
+                        }
+                    }
+                }
+
+                // enforce top row pinned positions
+                for (let x = 0; x < cols; x++) {
+                    const p = points[idx(x, 0)];
+                    p.x = 10 + x * spacing;
+                    p.y = 6;
+                    p.oldX = p.x;
+                    p.oldY = p.y;
+                }
+            }
+
+            function draw() {
+                ctx.clearRect(0, 0, w, h);
+                ctx.imageSmoothingEnabled = false;
+
+                // draw constraints
+                ctx.strokeStyle = "rgba(255, 255, 255, 0.55)";
+                ctx.lineWidth = 1;
+                for (const [i, j] of constraints) {
+                    const a = points[i];
+                    const b = points[j];
+                    ctx.beginPath();
+                    ctx.moveTo(a.x + 0.5, a.y + 0.5);
+                    ctx.lineTo(b.x + 0.5, b.y + 0.5);
+                    ctx.stroke();
+                }
+
+                // draw points as pixels
+                ctx.fillStyle = "#ffffff";
+                for (const p of points) {
+                    ctx.fillRect(Math.round(p.x), Math.round(p.y), 2, 2);
+                }
+            }
+
+            function loop() {
+                update();
+                draw();
+                requestAnimationFrame(loop);
+            }
+            loop();
+        })();
+
+        // ===== EXTRA FEATURES =====
+        (function () {
+            // Web Audio helper
+            const AudioCtx = window.AudioContext || window.webkitAudioContext;
+            let audioCtx = null;
+            function beep(freq, dur) {
+                if (!AudioCtx) return;
+                if (!audioCtx) audioCtx = new AudioCtx();
+                const osc = audioCtx.createOscillator();
+                const gain = audioCtx.createGain();
+                osc.frequency.value = freq;
+                osc.type = "square";
+                gain.gain.value = 0.05;
+                osc.connect(gain);
+                gain.connect(audioCtx.destination);
+                osc.start();
+                osc.stop(audioCtx.currentTime + dur);
+            }
+
+            // Loader hide
+            const loaderFill = document.getElementById("loaderFill");
+            let loadProgress = 0;
+            const loadInterval = setInterval(function () {
+                loadProgress += Math.random() * 18 + 8;
+                if (loadProgress > 100) loadProgress = 100;
+                if (loaderFill) loaderFill.style.width = loadProgress + "%";
+                if (loadProgress >= 100) {
+                    clearInterval(loadInterval);
+                    setTimeout(function () {
+                        const loader = document.getElementById("loader");
+                        if (loader) loader.classList.add("hide");
+                    }, 400);
+                }
+            }, 200);
+
+            function hideLoader() {
+                const loader = document.getElementById("loader");
+                if (loader) loader.classList.add("hide");
+            }
+            window.addEventListener("load", function () {
+                // ensure progress completes
+            });
+            setTimeout(hideLoader, 2600);
+
+            // Scroll progress + back to top
+            const progress = document.getElementById("scroll-progress");
+            const backToTop = document.getElementById("back-to-top");
+            function onScroll() {
+                const scrollTop = window.scrollY;
+                const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+                const pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+                if (progress) progress.style.width = pct + "%";
+                if (backToTop) {
+                    if (scrollTop > 300) backToTop.classList.add("show");
+                    else backToTop.classList.remove("show");
+                }
+            }
+            window.addEventListener("scroll", onScroll);
+            onScroll();
+            if (backToTop) {
+                backToTop.addEventListener("click", function () {
+                    window.scrollTo({ top: 0, behavior: "smooth" });
+                    beep(660, 0.1);
+                });
+            }
+
+            // Toast / achievements
+            const toast = document.getElementById("toast");
+            let toastTimer = null;
+            function showToast(text) {
+                if (!toast) return;
+                toast.textContent = text;
+                toast.classList.add("show");
+                clearTimeout(toastTimer);
+                toastTimer = setTimeout(function () {
+                    toast.classList.remove("show");
+                }, 2600);
+            }
+
+            // Particle burst
+            function burst(x, y, count) {
+                const colors = ["#5a8f3a", "#7a7a7a", "#8b5a2b", "#b0b0b0", "#f5f5f5"];
+                for (let i = 0; i < count; i++) {
+                    const p = document.createElement("div");
+                    p.className = "particle";
+                    p.style.left = x + "px";
+                    p.style.top = y + "px";
+                    p.style.background = colors[Math.floor(Math.random() * colors.length)];
+                    document.body.appendChild(p);
+                    const angle = Math.random() * Math.PI * 2;
+                    const speed = 3 + Math.random() * 5;
+                    let vx = Math.cos(angle) * speed;
+                    let vy = Math.sin(angle) * speed - 4;
+                    let life = 0;
+                    const maxLife = 40 + Math.random() * 20;
+                    function step() {
+                        life++;
+                        vy += 0.6; // gravity
+                        x += vx;
+                        y += vy;
+                        p.style.left = x + "px";
+                        p.style.top = y + "px";
+                        p.style.opacity = 1 - life / maxLife;
+                        if (life < maxLife) requestAnimationFrame(step);
+                        else p.remove();
+                    }
+                    requestAnimationFrame(step);
+                }
+            }
+
+            // Global click particles + sound
+            document.addEventListener("click", function (event) {
+                burst(event.clientX, event.clientY, 12);
+                beep(440, 0.06);
+            });
+
+            // Hover sound on buttons
+            document.querySelectorAll(".btn, .filter-btn, .send-btn, .mine-btn, .daynight-toggle, .menu-toggle").forEach(function (btn) {
+                btn.addEventListener("mouseenter", function () { beep(660, 0.04); });
+            });
+
+            // Day/night toggle
+            const dayNightBtn = document.getElementById("dayNightBtn");
+            if (dayNightBtn) {
+                dayNightBtn.addEventListener("click", function (event) {
+                    event.stopPropagation();
+                    document.body.classList.toggle("night");
+                    const isNight = document.body.classList.contains("night");
+                    showToast(isNight ? "Night mode" : "Day mode");
+                    beep(isNight ? 220 : 880, 0.1);
+                });
+            }
+
+            // Konami code easter egg
+            const konami = ["ArrowUp","ArrowUp","ArrowDown","ArrowDown","ArrowLeft","ArrowRight","ArrowLeft","ArrowRight","b","a"];
+            let konamiIndex = 0;
+            window.addEventListener("keydown", function (event) {
+                if (event.key === konami[konamiIndex]) {
+                    konamiIndex++;
+                    if (konamiIndex === konami.length) {
+                        konamiIndex = 0;
+                        document.body.style.animation = "spin 2s linear";
+                        showToast("Easter egg unlocked!");
+                        beep(880, 0.2);
+                        setTimeout(function () { document.body.style.animation = ""; }, 2000);
+                    }
+                } else {
+                    konamiIndex = 0;
+                }
+            });
+
+            const spinStyle = document.createElement("style");
+            spinStyle.textContent = "@keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }";
+            document.head.appendChild(spinStyle);
+
+            // Achievements on scroll milestones
+            let achieved25 = false, achieved75 = false, achievedBottom = false;
+            window.addEventListener("scroll", function () {
+                const pct = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+                if (!achieved25 && pct >= 25) { achieved25 = true; showToast("Achievement: Explorer (25%)"); beep(550, 0.08); }
+                if (!achieved75 && pct >= 75) { achieved75 = true; showToast("Achievement: Deep diver (75%)"); beep(550, 0.08); }
+                if (!achievedBottom && pct >= 99) { achievedBottom = true; showToast("Achievement: Reached the end!"); beep(770, 0.12); }
+            });
+
+            // Flip ID card on click
+            const caseEl = document.getElementById("case");
+            if (caseEl) {
+                caseEl.addEventListener("click", function (event) {
+                    event.stopPropagation();
+                    caseEl.classList.toggle("flipped");
+                    beep(550, 0.08);
+                    if (caseEl.classList.contains("flipped")) {
+                        showToast("ID flipped: back side");
+                    } else {
+                        showToast("ID flipped: front side");
+                    }
+                });
+            }
+
+            // Cursor: diamond sword -> netherite sword on click
+            document.addEventListener("mousedown", function () {
+                document.body.classList.add("clicking");
+            });
+            document.addEventListener("mouseup", function () {
+                document.body.classList.remove("clicking");
+            });
+
+            // Initial achievement
+            setTimeout(function () { showToast("Welcome to the world!"); beep(770, 0.1); }, 1200);
+        })();
     </script>
+
+    <div id="toast" class="toast"></div>
+    <button id="back-to-top" aria-label="Back to top">↑</button>
 
 </body>
 </html>
